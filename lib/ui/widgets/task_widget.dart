@@ -4,7 +4,7 @@ import 'package:todo_ui/models/task.dart';
 import 'package:todo_ui/provider/todo_provider.dart';
 
 class TaskWidget extends StatelessWidget {
-  Task task;
+  TaskModel task;
   TaskWidget(this.task);
   @override
   Widget build(BuildContext context) {

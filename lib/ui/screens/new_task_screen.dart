@@ -79,7 +79,7 @@ class _NewTaskScreenState extends State<NewTaskScreen> {
                       bool isSuccess = taskForm.currentState.validate();
                       if(isSuccess){
                         taskForm.currentState.save();
-                        Task task = Task(title: title,isComplete: isComlete);
+                        TaskModel task = TaskModel(title: title,isComplete: isComlete);
                         provider.addTask(task);
                         RouterClass.routerClass.popScreen();
                       }

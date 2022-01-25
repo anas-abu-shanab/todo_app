@@ -5,20 +5,32 @@ import 'package:todo_ui/models/task.dart';
 
 class TodoProvider extends ChangeNotifier{
   GlobalKey<FormState> taskForm = GlobalKey<FormState>();
-  List<Task> allTasks = [
+  List<TaskModel> allTasks = [
 
   ];
 
-  addTask(Task task){
+  getCompleteTasks(){
+    return allTasks
+        .where((element) => element.isComplete)
+        .toList();
+  }
+
+  getInCompleteTasks(){
+    return allTasks
+        .where((element) => !element.isComplete)
+        .toList();
+  }
+
+  addTask(TaskModel task){
     log("test");
     allTasks.add(task);
     notifyListeners();
   }
-  editTask(Task task,bool isCompelte){
+  editTask(TaskModel task,bool isCompelte){
     task.isComplete = isCompelte;
     notifyListeners();
   }
-  deleteTask(Task task){
+  deleteTask(TaskModel task){
     allTasks.remove(task);
     log(task.title);
     notifyListeners();

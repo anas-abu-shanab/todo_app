@@ -8,17 +8,15 @@ class InCompleteTasksScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
-    return Provider.of<TodoProvider>(context).allTasks.where((element) => !element.isComplete).length == 0
+    return Provider.of<TodoProvider>(context).getInCompleteTasks().length == 0
         ? Center(
             child: Lottie.asset('assets/lottie/empty.json',width: 300),
           )
         : ListView.builder(
-            itemCount: Provider.of<TodoProvider>(context).allTasks.where((element) => !element.isComplete).length,
+            itemCount: Provider.of<TodoProvider>(context).getInCompleteTasks().length,
             itemBuilder: (context, index) {
               return TaskWidget(
-                  Provider.of<TodoProvider>(context).allTasks
-                      .where((element) => !element.isComplete)
-                      .toList()[index]);
+                  Provider.of<TodoProvider>(context).getInCompleteTasks()[index]);
             });
   }
 }
